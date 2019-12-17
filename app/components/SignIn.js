@@ -21,45 +21,48 @@ export default class SignIn extends Component {
   }
 
   onClickListener = (viewId) => {
+
     if(viewId === 'register'){
-      this.refs.toast.show("inside register");
-      // this.props.onRouteChange('register');
+      this.refs.toast.show("Inside registerclick if statement.");
       this.props.navigation.navigate('Profile', {name: 'Jane'})
     }
+    else if (viewId === 'signin') {
+      fetch('https://agile-headland-13060.herokuapp.com/signin',{
+  			method: 'post',
+  			headers: {'Content-Type':'application/json'},
+  			body:JSON.stringify({
+  				email: this.state.email,
+  				password: this.state.password
+  			})
+  		})
+  			.then(response => response.json())
+  			.then(data => {
+          if(data.id){
 
-    fetch('https://agile-headland-13060.herokuapp.com/signin',{
-			method: 'post',
-			headers: {'Content-Type':'application/json'},
-			body:JSON.stringify({
-				email: this.state.email,
-				password: this.state.password
-			})
-		})
-			.then(response => response.json())
-			.then(data => {
-				this.refs.toast.show(data.name+" response");
-
-				// if(data.id){
-				// 	fetch('https://agile-headland-13060.herokuapp.com/contacts',{
-				// 		method: 'post',
-				// 		headers: {'Content-Type':'application/json'},
-				// 		body:JSON.stringify({
-				// 			name: data.name
-				// 		})
-				// 	})
-				// 		.then(result => result.json())
-				// 		.then(friends => {
-				// 				this.props.loadUser(data, friends);
-				// 				this.props.onRouteChange('home');
-				// 		})
-				// 		.catch(err => {
-				// 			console.log(err);
-				// 		})
-				// }
-			})
-			.catch(err => {
-				this.refs.toast.show(err+" error");
-			})
+            this.refs.toast.show(data.name);
+  					fetch('https://agile-headland-13060.herokuapp.com/contacts',{
+  						method: 'post',
+  						headers: {'Content-Type':'application/json'},
+  						body:JSON.stringify({
+  							name: data.name
+  						})
+  					})
+  						.then(result => result.json())
+  						.then(friends => {
+                  this.props.navigation.navigate('DrawerNavigatorExample', {data: data, friends: friends, hello: 'hello Mr.'})
+  						})
+  						.catch(err => {
+  							console.log(err);
+  						})
+        }
+        else{
+          this.refs.toast.show(data);
+        }
+  			})
+  			.catch(err => {
+  				this.refs.toast.show(err+" error");
+  			})
+    }
   }
 
   changeActivity = () => {
@@ -115,7 +118,7 @@ export default class SignIn extends Component {
             fontWeight={'bold'}
           />
 
-          <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} underlayColor="grey" onPress={() => this.onClickListener('login')}>
+          <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} underlayColor="grey" onPress={() => this.onClickListener('signin')}>
             <Text style={styles.loginText}>Login</Text>
           </TouchableHighlight>
 
