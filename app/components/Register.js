@@ -14,11 +14,12 @@ export default class Register extends Component {
 
   constructor(props) {
     super(props);
+    console.disableYellowBox = true;
     this.state = {
       name: '',
       email   : '',
       password: '',
-      imageurl: {uri : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRACqHZnYq7HfFp_OshaZ-Hgc_1mjYqJrWJpc71xNWcxdts2O0j6g'}
+      imageurl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRACqHZnYq7HfFp_OshaZ-Hgc_1mjYqJrWJpc71xNWcxdts2O0j6g'
     }
   }
 
@@ -26,10 +27,29 @@ export default class Register extends Component {
     if(viewId === 'login'){
       this.props.navigation.navigate('Home', {name: 'Jane'});
     } else if (viewId === 'register') {
-      this.props.navigation.navigate('ChatScreen');
-    }
-    else{
-      this.refs.toast.show(viewId);
+    		fetch('https://agile-headland-13060.herokuapp.com/register',{
+    			method: 'post',
+    			headers: {'Content-Type':'application/json'},
+    			body:JSON.stringify({
+    				name: this.state.name,
+    				email: this.state.email,
+    				password: this.state.password,
+    				imageurl: this.state.imageurl
+    			})
+    		})
+    			.then(response => response.json())
+    			.then(data => {
+    				if(data.id){
+    					const friends = [];
+    					this.props.navigation.navigate('DrawerNavigatorExample', {data: data, friends: friends})
+    				}
+            else{
+              this.refs.toast.show("Unable to register.");
+            }
+    			})
+          .catch(err => {
+            this.refs.toast.show(err);
+          })
     }
   }
 
@@ -54,7 +74,7 @@ export default class Register extends Component {
 
         <View style={styles.header}>
           <Text style={styles.title}>Register</Text>
-          <Image style={styles.imageContainer} source={this.state.imageurl} />
+          <Image style={styles.imageContainer} source={{uri : this.state.imageurl}} />
         </View>
 
 
@@ -105,7 +125,7 @@ export default class Register extends Component {
             inputStyle={{ color: '#000000' }}
             iconClass={FontAwesomeIcon}
             iconName={'camera'}
-            onChangeText={(text) => { this.setState({imageurl: {uri : text}})}}
+            onChangeText={(text) => { this.setState({imageurl: text})}}
             iconColor={'#000000'}
             iconSize={15}
             fontWeight={'bold'}
@@ -120,7 +140,9 @@ export default class Register extends Component {
           </TouchableHighlight>
 
         </View>
-          <Toast ref="toast"/>
+
+        <Toast ref="toast"/>
+
         </ImageBackground>
       </View>
     );
@@ -168,6 +190,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    opacity: 0.8,
     width:330,
   },
   loginButton: {

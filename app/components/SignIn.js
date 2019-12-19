@@ -4,20 +4,28 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {Fumi} from 'react-native-textinput-effects';
 import * as Font from 'expo-font';
 import Toast, {DURATION} from 'react-native-easy-toast';
+import { StackActions, NavigationActions } from 'react-navigation';
+
+const resetAction = StackActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'DrawerNavigatorExample' })],
+});
 
 export default class SignIn extends Component {
 
-  static navigationOptions =
-  {
+  static navigationOptions = {
      title: 'SignIn',
   };
 
   constructor(props) {
     super(props);
+    console.disableYellowBox = true;
     this.state = {
       email   : '',
       password: '',
     }
+
+    // this.props.navigation.dispatch(resetAction);
   }
 
   onClickListener = (viewId) => {
@@ -38,8 +46,6 @@ export default class SignIn extends Component {
   			.then(response => response.json())
   			.then(data => {
           if(data.id){
-
-            this.refs.toast.show(data.name);
   					fetch('https://agile-headland-13060.herokuapp.com/contacts',{
   						method: 'post',
   						headers: {'Content-Type':'application/json'},
@@ -49,14 +55,14 @@ export default class SignIn extends Component {
   					})
   						.then(result => result.json())
   						.then(friends => {
-                  this.props.navigation.navigate('DrawerNavigatorExample', {data: data, friends: friends, hello: 'hello Mr.'})
+                  this.props.navigation.navigate('DrawerNavigatorExample', {data: data, friends: friends})
   						})
   						.catch(err => {
-  							console.log(err);
+  							this.refs.toast.show(err);
   						})
         }
         else{
-          this.refs.toast.show(data);
+          this.refs.toast.show("Unable to sign in.");
         }
   			})
   			.catch(err => {
