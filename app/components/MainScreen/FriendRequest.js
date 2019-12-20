@@ -83,13 +83,14 @@ onClickListener(viewId) {
   render() {
     return (
       <View style={{flex: 1, width: '100%', backgroundColor: '#261a0d'}}>
-      {this.state.rqstlist.length === 0?
+      <Text style={{fontSize: 60, fontWeight: 'bold', marginTop:20, color: '#261a0d', textAlign: 'center', backgroundColor:'#b59d96', borderRadius: 20, width: '98%'}}>Requests</Text>
 
+      {this.state.rqstlist.length === 0?
       <View style={{paddingHorizontal: 50, paddingTop: 100}}>
         <Text style={{fontSize: 50, fontWeight: 'bold', color: '#ecd9c6', textAlign: 'center'}}>No friend request pending</Text>
       </View>:
 
-      <View style={{paddingTop: 28, width:'100%', paddingBottom: 60}}>
+      <View style={{paddingTop: 5, width:'100%', paddingBottom: 60}}>
       <FlatList
         data={this.state.rqstlist}
         style={{height: '100%', width: '100%'}}

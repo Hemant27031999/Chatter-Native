@@ -40,13 +40,7 @@ const DrawerNavigatorExample = createDrawerNavigator({
     navigationOptions: {
       drawerLabel: 'Friend Request',
     },
-  },
-  // SignIn: {
-  //   screen: SignIn,
-  //   navigationOptions: {
-  //     drawerLabel: 'LogOut',
-  //   },
-  // }
+  }
 },
 {
    contentComponent: drawerContentComponents

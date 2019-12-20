@@ -5,11 +5,7 @@ import {Fumi} from 'react-native-textinput-effects';
 import * as Font from 'expo-font';
 import Toast, {DURATION} from 'react-native-easy-toast';
 import { StackActions, NavigationActions } from 'react-navigation';
-
-const resetAction = StackActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: 'DrawerNavigatorExample' })],
-});
+import {ColorDotsLoader, CirclesRotationScaleLoader} from 'react-native-indicator';
 
 export default class SignIn extends Component {
 
@@ -24,8 +20,6 @@ export default class SignIn extends Component {
       email   : '',
       password: '',
     }
-
-    // this.props.navigation.dispatch(resetAction);
   }
 
   onClickListener = (viewId) => {

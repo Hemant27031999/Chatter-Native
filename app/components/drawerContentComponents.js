@@ -17,8 +17,8 @@ export default class drawerContentComponents extends Component {
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
-                    <Image style={{width: 170, height: 170, justifyContent: 'center', borderWidth: 1, borderColor: '#000000', borderRadius: 80}} source={require('./MainScreen/profile.jpeg')} />
-                    <Text style={styles.headerText}>Prathamesh Katkar</Text>
+                    <Image style={{width: 170, height: 170, justifyContent: 'center', borderWidth: 1, borderColor: '#000000', borderRadius: 80}} source={{uri: this.props.navigation.getParam('data', "imageURL").imageurl}} />
+                    <Text style={styles.headerText}>{this.props.navigation.getParam('data', "name").name}</Text>
             </View>
             <View style={styles.screenContainer}>
                 <TouchableHighlight style={[styles.screenStyle, (this.props.activeItemKey=='ChatScreen') ? styles.activeBackgroundColor : null]} onPress={this.navigateToScreen('ChatScreen')}>

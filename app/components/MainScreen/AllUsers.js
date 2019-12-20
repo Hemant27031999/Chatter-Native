@@ -109,15 +109,16 @@ searchFriends = (e) => {
   render() {
     return (
       <View style={{flex: 1, width: '100%', backgroundColor: '#261a0d'}}>
+      <Text style={{fontSize: 60, fontWeight: 'bold', marginTop:20, color: '#261a0d', textAlign: 'center', backgroundColor:'#b59d96', borderRadius: 20, width: '98%'}}>All Users</Text>
       {this.state.usersList.length === 0?
 
       <View style={{paddingHorizontal: 50, paddingTop: 100}}>
         <Text style={{fontSize: 50, fontWeight: 'bold', color: '#ecd9c6', textAlign: 'center'}}>No user found</Text>
       </View>:
 
-      <View style={{paddingTop: 28, width:'100%', paddingBottom: 60}}>
+      <View style={{width:'100%', paddingBottom: 60}}>
       <TextInput
-         style={{ borderColor: '#686C68', width: '97%', paddingHorizontal: 20, marginHorizontal: 5, marginVertical: 5, height: 50, borderWidth: 1, borderRadius: 30, color: '#d6d6c2', fontSize: 20}}
+         style={{ borderColor: '#686C68', width: '98%', paddingHorizontal: 20, marginHorizontal: 3, marginVertical: 5, height: 50, borderWidth: 1, borderRadius: 30, color: '#d6d6c2', fontSize: 20}}
          placeholder = 'search a friend'
          ref={input => { this.textInput = input }}
          onChangeText={(text) => this.searchFriends(text)}
