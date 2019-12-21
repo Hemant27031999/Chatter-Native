@@ -1,9 +1,11 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "homepage": "",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "deploy": "expo-gh-pages",
     "web": "expo start --web",
     "eject": "expo eject"
   },
@@ -11,6 +13,7 @@
     "@react-native-community/netinfo": "^5.0.0",
     "apsl-react-native-button": "^3.1.1",
     "expo": "~36.0.0",
+    "expo-gh-pages": "^1.1.2",
     "pusher-js": "^5.0.3",
     "react": "16.9.0",
     "react-dom": "~16.9.0",
