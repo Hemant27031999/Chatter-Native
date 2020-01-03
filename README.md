@@ -9,7 +9,7 @@
 
 </br>
 
-Chatter-Native is a simple mobile app made for chatting with your friends. It provide realtime message exchange like any other chat app and has awesome UI. It is build on React Native platform so it supports both Android and IOS support. The app is easy to run, you just have to install the expo app from play store and from that expo app, scan the QR code provided [here](https://expo.io/@hemant_yadav/Chatter-Native). And if you don't want to install the expo app, you can download the apk from [here]().
+Chatter-Native is a simple mobile app made for chatting with your friends. It provide realtime message exchange like any other chat app and has awesome UI. It is build on React Native platform so it supports both Android and IOS support. The app is easy to run, you just have to install the expo app from play store and from that expo app, scan the QR code provided [here](https://expo.io/@hemant_yadav/Chatter-Native). And if you don't want to install the expo app, you can download the apk from [here](https://drive.google.com/open?id=1b7EqwGhmhhuXG4ujw7NB4QSK2vNQdfBe).
 </br>
 The **server for the app** is a node js server hosted on heroku and is there on github as well. View it [here](https://github.com/Hemant27031999/Chatter-back-end).
 </br>
