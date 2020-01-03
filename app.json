@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "Chatter",
-    "slug": "Chatter-Native",
+    "slug": "chatter_native",
+    "icon": "icon.png",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -28,6 +29,8 @@
     },
     "android": {
       "package": "com.chatternative.chatter"
-    }
+    },
+    "description": "This is a Chat App which enables you to do realtime chatting with your friends. We also has the web version of it, which you can see here (https://chatter-fro.herokuapp.com/), so you can enjoy chatting from whichever platform you want.",
+    "githubUrl": "https://github.com/Hemant27031999/Chatter-Native"
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View, Button,TouchableHighlight, Image, Keyboard, ImageBackground, Animated, Dimensions, UIManager} from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Button,TouchableHighlight, KeyboardAvoidingView, Image, Keyboard, ImageBackground, Animated, Dimensions, UIManager} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {Fumi} from 'react-native-textinput-effects';
 import * as Font from 'expo-font';
@@ -55,9 +55,10 @@ export default class Register extends Component {
 
   render() {
     return (
-      <View
+      <KeyboardAvoidingView
         style={styles.container}
-        contentContainerStyle={styles.content}>
+        contentContainerStyle={styles.content}
+        behavior="height" enabled>
 
         <ImageBackground
               style={{
@@ -144,7 +145,8 @@ export default class Register extends Component {
         <Toast ref="toast"/>
 
         </ImageBackground>
-      </View>
+
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -153,6 +155,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   content: {
     paddingBottom: 300,

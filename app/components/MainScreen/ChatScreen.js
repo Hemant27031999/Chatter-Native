@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { FlatList, Text, View, Image, TextInput, StyleSheet,TouchableHighlight,  } from "react-native";
+import { FlatList, Text, View, Image, TextInput, StyleSheet,TouchableHighlight, KeyboardAvoidingView  } from "react-native";
 import { AppLoading } from 'expo';
 import SignIn from '../SignIn';
 import Register from '../Register';
@@ -9,7 +9,6 @@ import Welcome from './Welcome'
 import {createAppContainer} from 'react-navigation';
 import Pusher from 'pusher-js/react-native';
 import Toast, {DURATION} from 'react-native-easy-toast';
-
 
 export default class ChatScreen extends Component {
 
@@ -203,7 +202,7 @@ onClickListener = (viewId) => {
   render() {
 
     return (
-      <View style={{flex: 1, alignItems: 'center', paddingTop: 25, backgroundColor: '#bac4bc'}}>
+      <KeyboardAvoidingView style={{flex: 1, alignItems: 'center', paddingTop: 25, backgroundColor: '#bac4bc'}} behavior="padding" enabled>
       <FlatList
         horizontal
         data={this.state.friendslist}
@@ -270,7 +269,7 @@ onClickListener = (viewId) => {
        </View>
      }
       <Toast ref="toast"/>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
