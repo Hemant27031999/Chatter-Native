@@ -27,7 +27,7 @@
     "react-native-keyboard-spacer": "^0.4.1",
     "react-native-login-screen": "^0.2.1",
     "react-native-progress": "^4.0.3",
-    "react-native-reanimated": "^1.4.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-textinput-effects": "^0.5.1",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
